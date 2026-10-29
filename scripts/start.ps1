@@ -25,7 +25,8 @@ Write-Host "   • REST API:        http://localhost:8080/api        " -Foregrou
 Write-Host "   • Swagger UI:      http://localhost:8080/swagger-ui/index.html" -ForegroundColor White
 Write-Host "   • Health Check:    http://localhost:8080/actuator/health" -ForegroundColor White
 Write-Host "`n   Demo Credentials:                                    " -ForegroundColor Cyan
-Write-Host "   - Admin:    admin@smartpark.com    / Admin@123      " -ForegroundColor White
-Write-Host "   - Operator: operator@smartpark.com / Operator@123   " -ForegroundColor White
-Write-Host "   - Customer: customer@smartpark.com / Customer@123   " -ForegroundColor White
+Write-Host "   - User:     ejazmehendi123@gmail.com / Ejaz@123      " -ForegroundColor White
+Write-Host "   - Admin:    admin@smartpark.com      / Admin@123     " -ForegroundColor White
+Write-Host "   - Operator: operator@smartpark.com   / Operator@123  " -ForegroundColor White
+Write-Host "   - Customer: customer@smartpark.com   / Customer@123  " -ForegroundColor White
 Write-Host "========================================================" -ForegroundColor Green

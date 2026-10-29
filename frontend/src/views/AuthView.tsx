@@ -226,6 +226,28 @@ export const AuthView: React.FC = () => {
                   style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)' }}
                 />
               </div>
+              <div style={{ marginTop: '0.45rem', fontSize: '0.78rem', color: 'var(--text-dim)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span>Quick Fill:</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('ejazmehendi123@gmail.com');
+                    setPassword('Ejaz@123');
+                    if (isRegister) setFullName('Ejaz Mehendi');
+                  }}
+                  style={{
+                    background: 'rgba(99, 102, 241, 0.15)',
+                    border: '1px solid rgba(99, 102, 241, 0.3)',
+                    color: '#a5b4fc',
+                    borderRadius: '4px',
+                    padding: '2px 8px',
+                    cursor: 'pointer',
+                    fontSize: '0.75rem',
+                  }}
+                >
+                  ejazmehendi123@gmail.com
+                </button>
+              </div>
             </div>
 
             <button
