@@ -1,20 +1,30 @@
 package com.smartpark.service;
 
-import com.smartpark.dto.response.*;
+import com.smartpark.dto.response.DashboardResponse;
+import com.smartpark.dto.response.OccupancyResponse;
+import com.smartpark.dto.response.PeakHoursResponse;
+import com.smartpark.dto.response.RevenueReportResponse;
 import com.smartpark.entity.ParkingLocation;
-import com.smartpark.entity.ParkingSlot;
-import com.smartpark.entity.enums.*;
-import com.smartpark.repository.*;
+import com.smartpark.entity.enums.BookingStatus;
+import com.smartpark.entity.enums.PaymentMethod;
+import com.smartpark.entity.enums.SessionStatus;
+import com.smartpark.entity.enums.SlotStatus;
+import com.smartpark.entity.enums.UserRole;
+import com.smartpark.repository.BookingRepository;
+import com.smartpark.repository.ParkingLocationRepository;
+import com.smartpark.repository.ParkingSessionRepository;
+import com.smartpark.repository.ParkingSlotRepository;
+import com.smartpark.repository.PaymentRepository;
+import com.smartpark.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
