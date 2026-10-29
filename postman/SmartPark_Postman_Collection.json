@@ -1,0 +1,287 @@
+{
+  "info": {
+    "name": "SmartPark API Collection",
+    "_postman_id": "7d9e4a8b-32f1-4821-992a-smartpark-api",
+    "description": "Postman API Collection for SmartPark — Intelligent Parking Reservation & Billing System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api", "type": "string" },
+    { "key": "token", "value": "", "type": "string" },
+    { "key": "bookingId", "value": "1", "type": "string" },
+    { "key": "qrToken", "value": "", "type": "string" },
+    { "key": "sessionId", "value": "1", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "Login (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@smartpark.com\",\n  \"password\": \"Admin@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Login (Operator)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"operator@smartpark.com\",\n  \"password\": \"Operator@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Login (Customer)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"customer@smartpark.com\",\n  \"password\": \"Customer@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Alex Mercer\",\n  \"email\": \"alex@example.com\",\n  \"password\": \"Alex@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          }
+        },
+        {
+          "name": "Get Current User Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/auth/me", "host": ["{{baseUrl}}"], "path": ["auth", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Locations & Slots",
+      "item": [
+        {
+          "name": "Get Locations",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/locations", "host": ["{{baseUrl}}"], "path": ["locations"] }
+          }
+        },
+        {
+          "name": "Get Available Slots",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/slots/available?locationId=1&type=CAR", "host": ["{{baseUrl}}"], "path": ["slots", "available"] }
+          }
+        },
+        {
+          "name": "Get Occupied Slots (Active Records)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/slots/occupied", "host": ["{{baseUrl}}"], "path": ["slots", "occupied"] }
+          }
+        },
+        {
+          "name": "Get All Slots",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/slots", "host": ["{{baseUrl}}"], "path": ["slots"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Bookings",
+      "item": [
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 1,\n  \"slotId\": 2,\n  \"startTime\": \"2026-10-25T17:00:00\",\n  \"endTime\": \"2026-10-25T19:00:00\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/bookings", "host": ["{{baseUrl}}"], "path": ["bookings"] }
+          }
+        },
+        {
+          "name": "Get My Bookings",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/bookings", "host": ["{{baseUrl}}"], "path": ["bookings"] }
+          }
+        },
+        {
+          "name": "Get Ticket by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/bookings/{{bookingId}}/ticket", "host": ["{{baseUrl}}"], "path": ["bookings", "{{bookingId}}", "ticket"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Gate Operations & Parking",
+      "item": [
+        {
+          "name": "Verify QR at Gate Entry",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"qrToken\": \"{{qrToken}}\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/parking/verify-qr", "host": ["{{baseUrl}}"], "path": ["parking", "verify-qr"] }
+          }
+        },
+        {
+          "name": "Get Active Sessions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/parking/active", "host": ["{{baseUrl}}"], "path": ["parking", "active"] }
+          }
+        },
+        {
+          "name": "Get Fee Estimate",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/parking/{{sessionId}}/estimate", "host": ["{{baseUrl}}"], "path": ["parking", "{{sessionId}}", "estimate"] }
+          }
+        },
+        {
+          "name": "Gate Checkout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/parking/{{sessionId}}/checkout", "host": ["{{baseUrl}}"], "path": ["parking", "{{sessionId}}", "checkout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Payments",
+      "item": [
+        {
+          "name": "Process Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": 1,\n  \"method\": \"UPI\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] }
+          }
+        },
+        {
+          "name": "Get My Payments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/payments/my-payments", "host": ["{{baseUrl}}"], "path": ["payments", "my-payments"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Reports & Analytics",
+      "item": [
+        {
+          "name": "Dashboard KPI Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/reports/dashboard", "host": ["{{baseUrl}}"], "path": ["reports", "dashboard"] }
+          }
+        },
+        {
+          "name": "Occupancy Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/reports/occupancy", "host": ["{{baseUrl}}"], "path": ["reports", "occupancy"] }
+          }
+        },
+        {
+          "name": "Revenue Report (Overall)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/reports/revenue", "host": ["{{baseUrl}}"], "path": ["reports", "revenue"] }
+          }
+        },
+        {
+          "name": "Revenue Report by Specific Date",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/reports/revenue?date=2026-10-29", "host": ["{{baseUrl}}"], "path": ["reports", "revenue"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Pricing & Real-Time Fare",
+      "item": [
+        {
+          "name": "Calculate Fare by Duration (135 mins = 2h 15m -> ₹50)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/pricing/fare-by-minutes?durationMinutes=135", "host": ["{{baseUrl}}"], "path": ["pricing", "fare-by-minutes"] }
+          }
+        },
+        {
+          "name": "Calculate Fare by Duration (185 mins = 3h 5m -> ₹100)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/pricing/fare-by-minutes?durationMinutes=185", "host": ["{{baseUrl}}"], "path": ["pricing", "fare-by-minutes"] }
+          }
+        },
+        {
+          "name": "Calculate Fare by Timestamps",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/pricing/calculate?entryTime=2026-10-25T10:00:00&exitTime=2026-10-25T12:15:00", "host": ["{{baseUrl}}"], "path": ["pricing", "calculate"] }
+          }
+        },
+        {
+          "name": "Get Pricing Engine Rules",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/pricing/rules", "host": ["{{baseUrl}}"], "path": ["pricing", "rules"] }
+          }
+        }
+      ]
+    }
+  ]
+}
