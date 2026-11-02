@@ -39,7 +39,7 @@ A complete, production-grade automated parking reservation, boom barrier QR gate
 
 ## 🔑 Login Credentials
 
-The system includes pre-configured demo accounts for all roles with **1-click login toggles** in the UI, as well as your personal user account:
+The system includes pre-configured demo accounts for all roles **1-click login toggles** in the UI, as well as your personal user account:
 
 | Role | Email | Password | Pre-Registered Vehicle | Notes |
 | :--- | :--- | :--- | :--- | :--- |
