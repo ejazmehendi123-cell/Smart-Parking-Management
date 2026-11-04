@@ -22,7 +22,7 @@ A complete, production-grade automated parking reservation, boom barrier QR gate
 6. **Simulated Payment Gateway & Tax Invoices**: 1-click instant approval for UPI, Card, and Cash with official printable tax receipts.
 7. **Executive Analytics & Occupancy Dashboard**: Visual gauges for live occupancy, revenue by payment channel, revenue by facility, and peak utilization hours.
 8. **User Governance & Audit Trail**: Comprehensive administrative logs tracking actors, actions, and timestamps.
-9. **Defensive Programming & Jakarta Bean Validation**: Enforces vehicle registration regex patterns, non-null slot IDs, future timestamps, and global `@RestControllerAdvice` standardized error formatting.
+9. **Defensive Programming & Jakarta Bean Validation**: Enforces vehicle registration regex patterns, non-null slot IDs, future timestamps, and global `@RestControllerAdvice`.
 
 ---
 
