@@ -111,7 +111,7 @@ cd "c:\Projects\Smart Parking System\frontend"
 npm install    # only needed on first run
 npm run dev
 ```
-* Frontend boots on: `http://localhost:5173` *(or `http://localhost:5174`)*
+* Frontend boots on: `http://localhost:5173`
 * Open your browser at the displayed URL.
 
 ---
