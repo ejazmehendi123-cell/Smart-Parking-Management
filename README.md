@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8.3-646cff.svg?logo=vite)](https://vitejs.dev/)
 [![JUnit 5](https://img.shields.io/badge/Tests-23%20Passed-success.svg)](file:///c:/Projects/Smart%20Parking%20System/docs/TESTING.md)
 
-A complete, production-grade automated parking reservation, boom barrier QR gate check-in, real-time fee calculation, and billing system built with **Spring Boot 3 (Java 21)**, **PostgreSQL 18**, and **React 19 + TypeScript (Vite)**.
+A complete, production-grade automated parking reservation, boom barrier QR gate check-in, real-time fee calculation and billing system built with **Spring Boot 3 (Java 21)**, **PostgreSQL 18**, and **React 19 + TypeScript (Vite)**.
 
 ---
 
