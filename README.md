@@ -194,7 +194,7 @@ $$\text{fee} = 50.00 \times \left\lceil \frac{\text{duration\_seconds}}{10800} \
    - Click the quick-fill chip **`ejazmehendi123@gmail.com`** or click the **Customer** demo button.
 2. **Reserve a Bay**:
    - Select an available green bay on the 2D visual map (e.g. `Bay A-101`).
-   - Choose vehicle `KA-05-EM-2026`, choose arrival/departure times, and click **Confirm Reservation**.
+   - Choose vehicle `KA-05-EM-2026`, choose arrival/departure times and click **Confirm Reservation**.
    - A digital ticket pops up with a scannable SVG QR code and booking reference `SP-XXXX`.
 3. **Gate Boom Barrier Check-in**:
    - In the modal, click **Simulate Gate Check-In** (or switch to **Operator** mode and scan the QR token).
